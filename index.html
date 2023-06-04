@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="sparkline-container"></div>
+    <!-- <script src="ChartTooltip.js"></script> -->
+    <script src="Sparkline.js"></script>
+
+    <script>
+        const sparklineConfig = {
+        type: 'sparkline',
+        hover: 'vertical', // Can be 'none', 'vertical' or 'point'
+        tooltip: {
+            display: true, // Can be set to true or false
+            label: true, // Can be set to true or false
+            theme: 'dark', // Light or dark, changes the color of the tooltip.
+            prepend: '$', // Character or symbol to prepend to tooltip values
+            append: '%', // Character or symbol to append to tooltip values
+        },
+        chart: {
+            lineStyle: 'smooth', // Can be set to 'direct', 'smooth' or 'waves'
+            dotDisplay: 'hover', // Can be set to 'hover', 'none', or 'all'
+            gradientFill: true, // Set to true to enable gradient fill under the line, or false to disable it.
+        },
+        scales: {
+            y: {
+                min: 0, // Sets the minimum value for the y axis.
+                max: 10000, // Sets the maximum value for the y axis.
+                suggestedMin: null, // Sets a preferred minimum value for the y axis.
+                suggestedMax: null, // Sets a preferred maximum value for the y axis.
+            },
+        },
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [
+                [1000, 1450, 1200, 1800, 2300, 2100, 1800, 1900, 2100, 2050, 2300, 2500], 
+                [1300, 1550, 1000, 1400, 4300, 5100, 4800, 2900, 2500, 3050, 1300, 1500],
+                [2300, 2550, 1500, 1900, 5300, 4100, 4500, 3100, 1900, 1850, 300, 800]
+            ],
+            legends: ['Sales', 'Buys', 'Expects'],
+            colors: ['#17B26A', '#F04438', '#0000FF'],
+        },
+        };
+
+        const sparklineContainer = document.getElementById('sparkline-container');
+        Sparkline(sparklineContainer, sparklineConfig);
+    </script>
+</body>
+</html>
